@@ -51,6 +51,13 @@ class EmojiTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    //действие по нажатию кнопки edit в таббаре
+    @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
+        let tableViewEditingMode = tableView.isEditing
+        
+        tableView.setEditing(!tableViewEditingMode, animated: true)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -64,18 +71,29 @@ class EmojiTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //конфигурация ячейки
+        //определим cell как переиспользуемую ячейку в tableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "EmojiCell", for: indexPath)
-        // Configure the cell...
+        //определим emoji как объект из массива emojis по его индексу с помощью indexPath и метода row(строка)
         let emoji = emojis[indexPath.row]
-        
+        //присвоим переменной content все свойства ячейки
         var content = cell.defaultContentConfiguration()
+        //заполним 2 текстовых поля нужной информацией
         content.text = "\(emoji.symbol) - \(emoji.name)"
         content.secondaryText = "\(emoji.description)"
+        //и наконец сконфигурируем ячейку с помощью промежуточной переменной content
         cell.contentConfiguration = content
+        //включение опции для перемещения ячейки
+        cell.showsReorderControl = true
         
         return cell
     }
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //в этом методе выполняется действие по нажатию на ячейку
+        let emoji = emojis[indexPath.row]
+        print("\(emoji.symbol) \(indexPath)")
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -96,13 +114,15 @@ class EmojiTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support rearranging the table view.
+
+    // метод для перемещения ячейки
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        let movedEmoji = emojis.remove(at: fromIndexPath.row)
+        emojis.insert(movedEmoji, at: to.row)
     }
-    */
 
+
+    
     /*
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
