@@ -79,17 +79,12 @@ class EmojiTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //конфигурация ячейки
         //определим cell как переиспользуемую ячейку в tableView
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EmojiCell", for: indexPath)
+        //для версии 1.1 изменим конфигурирование ячейки
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EmojiCell", for: indexPath) as! EmojiTableViewCell
         //определим emoji как объект из массива emojis по его индексу с помощью indexPath и метода row(строка)
         let emoji = emojis[indexPath.row]
-        //присвоим переменной content все свойства ячейки
-        var content = cell.defaultContentConfiguration()
-        //заполним 2 текстовых поля нужной информацией
-        content.text = "\(emoji.symbol) - \(emoji.name)"
-        content.secondaryText = "\(emoji.description)"
-        //и наконец сконфигурируем ячейку с помощью промежуточной переменной content
-        cell.contentConfiguration = content
-        //включение опции для перемещения ячейки
+        //для версии 1.1 поменяем определение контента  теперь он определяется с помощью функции из файла EmojiTableViewCell
+        cell.update(with: emoji)
         cell.showsReorderControl = true
         
         return cell

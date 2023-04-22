@@ -14,6 +14,7 @@
 		02C08BBE29F3112B001B9BA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02C08BBC29F3112B001B9BA1 /* LaunchScreen.storyboard */; };
 		02C08BC629F31299001B9BA1 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C08BC529F31299001B9BA1 /* Emoji.swift */; };
 		02C08BCA29F313AF001B9BA1 /* EmojiTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C08BC929F313AF001B9BA1 /* EmojiTableViewController.swift */; };
+		02C08BF429F3EA93001B9BA1 /* EmojiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C08BF329F3EA93001B9BA1 /* EmojiTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		02C08BBF29F3112B001B9BA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02C08BC529F31299001B9BA1 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		02C08BC929F313AF001B9BA1 /* EmojiTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTableViewController.swift; sourceTree = "<group>"; };
+		02C08BF329F3EA93001B9BA1 /* EmojiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				02C08BC929F313AF001B9BA1 /* EmojiTableViewController.swift */,
+				02C08BF329F3EA93001B9BA1 /* EmojiTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 			files = (
 				02C08BCA29F313AF001B9BA1 /* EmojiTableViewController.swift in Sources */,
 				02C08BC629F31299001B9BA1 /* Emoji.swift in Sources */,
+				02C08BF429F3EA93001B9BA1 /* EmojiTableViewCell.swift in Sources */,
 				02C08BB229F31129001B9BA1 /* AppDelegate.swift in Sources */,
 				02C08BB429F31129001B9BA1 /* SceneDelegate.swift in Sources */,
 			);
