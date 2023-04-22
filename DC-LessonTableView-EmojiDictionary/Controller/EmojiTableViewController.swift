@@ -43,6 +43,11 @@ class EmojiTableViewController: UITableViewController {
              
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //изменение высоты ячеек чтобы влезал текст
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44.0
+        
     }
 
     //автообновление таблицы при возврате к самому вью с представлением
