@@ -15,6 +15,7 @@
 		02C08BC629F31299001B9BA1 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C08BC529F31299001B9BA1 /* Emoji.swift */; };
 		02C08BCA29F313AF001B9BA1 /* EmojiTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C08BC929F313AF001B9BA1 /* EmojiTableViewController.swift */; };
 		02C08BF429F3EA93001B9BA1 /* EmojiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C08BF329F3EA93001B9BA1 /* EmojiTableViewCell.swift */; };
+		02D8F94629F415210030EABF /* AddEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D8F94529F415210030EABF /* AddEditTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		02C08BC529F31299001B9BA1 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		02C08BC929F313AF001B9BA1 /* EmojiTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTableViewController.swift; sourceTree = "<group>"; };
 		02C08BF329F3EA93001B9BA1 /* EmojiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTableViewCell.swift; sourceTree = "<group>"; };
+		02D8F94529F415210030EABF /* AddEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			children = (
 				02C08BC929F313AF001B9BA1 /* EmojiTableViewController.swift */,
 				02C08BF329F3EA93001B9BA1 /* EmojiTableViewCell.swift */,
+				02D8F94529F415210030EABF /* AddEditTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02D8F94629F415210030EABF /* AddEditTableViewController.swift in Sources */,
 				02C08BCA29F313AF001B9BA1 /* EmojiTableViewController.swift in Sources */,
 				02C08BC629F31299001B9BA1 /* Emoji.swift in Sources */,
 				02C08BF429F3EA93001B9BA1 /* EmojiTableViewCell.swift in Sources */,

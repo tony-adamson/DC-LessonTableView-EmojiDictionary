@@ -43,12 +43,6 @@ class EmojiTableViewController: UITableViewController {
              
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     //автообновление таблицы при возврате к самому вью с представлением
@@ -63,6 +57,24 @@ class EmojiTableViewController: UITableViewController {
         
         tableView.setEditing(!tableViewEditingMode, animated: true)
     }
+    
+    //действие при осуществлении перехода при нажатии на кнопку добавления или выборе ячейки
+    @IBSegueAction func addEditEmoji(_ coder: NSCoder, sender: Any?) -> AddEditTableViewController? {
+        if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
+            //Редактирование эмоджи
+            let emojiToEdit = emojis[indexPath.row]
+            return AddEditTableViewController(coder: coder, emoji: emojiToEdit)
+        } else {
+            //Adding emoji
+            return AddEditTableViewController(coder: coder, emoji: nil)
+        }
+    }
+    
+    //функция для перехода с экрана редактирования/добавления
+    @IBAction func unwindToEmojiTableViewController(segue: UIStoryboardSegue) {
+        
+    }
+    
     
     // MARK: - Table view data source
 
@@ -90,11 +102,14 @@ class EmojiTableViewController: UITableViewController {
         return cell
     }
     
+    /*
+     на удаление
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //в этом методе выполняется действие по нажатию на ячейку
         let emoji = emojis[indexPath.row]
         print("\(emoji.symbol) \(indexPath)")
     }
+     */
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
