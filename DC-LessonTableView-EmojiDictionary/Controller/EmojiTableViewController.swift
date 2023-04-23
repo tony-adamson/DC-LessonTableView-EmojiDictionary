@@ -9,37 +9,12 @@ import UIKit
 
 class EmojiTableViewController: UITableViewController {
 
-    var emojis: [Emoji] = [
-       Emoji(symbol: "😀", name: "Grinning Face",
-             description: "A typical smiley face.", usage: "happiness"),
-       Emoji(symbol: "😕", name: "Confused Face",
-             description: "A confused, puzzled face.", usage: "unsure what to think; displeasure"),
-       Emoji(symbol: "😍", name: "Heart Eyes",
-             description: "A smiley face with hearts for eyes.", usage: "love of something; attractive"),
-       Emoji(symbol: "🧑‍💻", name: "Developer",
-             description: "A person working on a MacBook (probably using Xcode to write iOS apps in Swift).",
-             usage: "apps, software, programming"),
-       Emoji(symbol: "🐢", name: "Turtle", description: "A cute turtle.", usage: "something slow"),
-       Emoji(symbol: "🐘", name: "Elephant", description: "A gray elephant.", usage: "good memory"),
-       Emoji(symbol: "🍝", name: "Spaghetti", description: "A plate of spaghetti.", usage: "spaghetti"),
-       Emoji(symbol: "🎲", name: "Die", description: "A single die.", usage: "taking a risk, chance; game"),
-       Emoji(symbol: "⛺️", name: "Tent", description: "A small tent.", usage: "camping"),
-       Emoji(symbol: "📚", name: "Stack of Books", description: "Three colored books stacked on each other.",
-             usage: "homework, studying"),
-       Emoji(symbol: "💔", name: "Broken Heart", description: "A red, broken heart.",
-             usage: "extreme sadness"),
-       Emoji(symbol: "💤", name: "Snore", description: "Three blue \'z\'s.", usage: "tired, sleepiness"),
-       Emoji(symbol: "🏁", name: "Checkered Flag",  description: "A black-and-white checkered flag.",
-             usage: "completion"),
-       Emoji(symbol: "💩", name: "Shit", description: "Big mountain of shit", usage: "Very bad situation"),
-       Emoji(symbol: "🤡", name: "Clown", description: "Man - who think development its easy",
-             usage: "only for holywars"),
-       Emoji(symbol: "🧠", name: "Brain", description: "IQ 150", usage: "rarely"),
-       Emoji(symbol: "🦾", name: "ChatGPT", description: "Thing thing is smarter then you",
-             usage: "never"),
-       Emoji(symbol: "🐸", name: "pepe", description: "green frog from memes", usage: "regullary"),
-       Emoji(symbol: "🍔", name: "BigMac", description: "Many calories, junk food", usage: "every day")
-    ]
+    //массив эмодзи переехал в модель Эмодзи. теперь тут реализован вызов сохранения в файл после редактирования
+    var emojis: [Emoji] = [] {
+        didSet {
+            Emoji.saveToFile(emojis: emojis)
+        }
+    }
              
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +22,14 @@ class EmojiTableViewController: UITableViewController {
         //изменение высоты ячеек чтобы влезал текст
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44.0
+        
+        //пытаемся загрузить даныне из файла
+        if let savedEmojis = Emoji.loadFromFile() {
+            emojis = savedEmojis
+        } else {
+            //если загрузка не удалась берем из базовый список из модели
+            emojis = Emoji.sampleEmojis
+        }
         
     }
 
@@ -117,22 +100,6 @@ class EmojiTableViewController: UITableViewController {
         return cell
     }
     
-    /*
-     на удаление
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //в этом методе выполняется действие по нажатию на ячейку
-        let emoji = emojis[indexPath.row]
-        print("\(emoji.symbol) \(indexPath)")
-    }
-     */
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-    
     //действия для активации возможности удаления ячейки
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
@@ -148,32 +115,10 @@ class EmojiTableViewController: UITableViewController {
         }    
     }
 
-
-
     // метод для перемещения ячейки
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
         let movedEmoji = emojis.remove(at: fromIndexPath.row)
         emojis.insert(movedEmoji, at: to.row)
     }
-
-
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
